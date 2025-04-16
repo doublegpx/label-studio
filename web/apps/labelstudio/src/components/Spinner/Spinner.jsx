@@ -7,13 +7,14 @@ export const Spinner = ({ className, style, size = 32, stopped = false }) => {
   const sizeWithUnit = typeof size === "number" ? `${size}px` : size;
 
   return (
-    <div className={rootClass.mix(className)} style={{ ...(style ?? {}), "--spinner-size": sizeWithUnit }}>
-      <div className={rootClass.elem("body").mod({ stopped })}>
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
-    </div>
+    <div className="lsf-dloader"></div>
+    // <div className={rootClass.mix(className)} style={{ ...(style ?? {}), "--spinner-size": sizeWithUnit }}>
+    //   <div className={rootClass.elem("body").mod({ stopped })}>
+    //     <span />
+    //     <span />
+    //     <span />
+    //     <span />
+    //   </div>
+    // </div>
   );
 };
