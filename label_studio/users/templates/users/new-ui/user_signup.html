@@ -44,7 +44,7 @@
         {% endif %}
       </div>
       <div class="input-wrapper">
-        <label>How did you hear about us?</label>
+        <label>How did you hear about Label Studio?</label>
         <select class="lsf-select-ls" name="how_find_us" id="how_find_us">
           <option disabled value="" {% if not form.data.how_find_us %}selected{% endif %}>Select an option</option>
           {% for choice in found_us_options %}
@@ -58,8 +58,7 @@
         </select>
       </div>
       <div class="form-group">
-        <input name="allow_newsletters" id="allow_newsletters" type="hidden" value="false">
-        {% comment %} <input name="allow_newsletters" id="allow_newsletters" type="hidden" value="{% if user_form.data.allow_newsletters == 'false' %}false{% else %}true{% endif %}">
+        <input name="allow_newsletters" id="allow_newsletters" type="hidden" value="{% if user_form.data.allow_newsletters == 'false' %}false{% else %}true{% endif %}">
         <input name="allow_newsletters_visual" id="allow_newsletters_visual" class="lsf-checkbox-ls"
                 type="checkbox" style="width: auto" {% if user_form.data.allow_newsletters == 'false' %}{% else %}checked="checked{% endif %}"
                 onchange="document.getElementById('allow_newsletters').value=document.getElementById('allow_newsletters_visual').checked">
@@ -67,8 +66,8 @@
           Get the latest news from Heidi
           <img src="{{ settings.HOSTNAME }}{% static 'images/heidi.png' %}" alt="Heidi"
               width="25" style="position: absolute; right: -2.5em; top: -.25rem;">
-        </label> {% endcomment %}
-      </div>
+        </label>
+      </div> 
 
       {% if form.non_field_errors %}
         {% for error in form.non_field_errors %}
