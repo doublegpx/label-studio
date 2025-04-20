@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="author" content="Deepmentor" />
+    <meta name="author" content="Label Studio" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta
       name="viewport"
@@ -47,20 +47,22 @@
       href="{{settings.FRONTEND_HOSTNAME}}/react-app/main.css?v={{ versions.backend.commit }}"
       rel="stylesheet"
     />
-    {% endblock %} {% block app-scripts %} {% endblock %}
-
+    {% endblock %} {% block app-scripts %} {% endblock %} {% if
+    settings.FRONTEND_SENTRY_DSN %}
+    <!-- Sentry -->
     <script
       src="https://browser.sentry-cdn.com/5.17.0/bundle.min.js"
       integrity="sha384-lowBFC6YTkvMIWPORr7+TERnCkZdo5ab00oH5NkFLeQUAmBTLGwJpFjF6djuxJ/5"
       crossorigin="anonymous"
     ></script>
+    {% endif %}
 
     <script nonce="{{request.csp_nonce}}">
       window.exports = () => {};
     </script>
 
     {% block page_labeling %}
-    <title>Deepmentor Label</title>
+    <title>Label Studio</title>
     <link
       href="{{settings.HOSTNAME}}{% static 'images/favicon.ico' %}"
       rel="shortcut icon"
