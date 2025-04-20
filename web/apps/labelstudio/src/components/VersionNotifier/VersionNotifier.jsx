@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useAPI } from "../../providers/ApiProvider";
 import { Block, Elem } from "../../utils/bem";
 import "./VersionNotifier.scss";
-import { IconBell } from "@humansignal/icons";
+import { IconBell } from "../../assets/icons";
 
 const VersionContext = createContext();
 
@@ -61,8 +61,8 @@ export const VersionNotifier = ({ showNewVersion, showCurrentVersion }) => {
       {/* </a> */}
     </Block>
   ) : version && showCurrentVersion ? (
-    // tag={Link}  to="/version" target="_blank"
-    <Block name="current-version">
+    // tag={Link} to="/version" target="_blank"
+    <Block name="current-version" >
       v{version}
     </Block>
   ) : null;
