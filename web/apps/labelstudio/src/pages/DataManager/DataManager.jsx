@@ -22,7 +22,7 @@ import "./DataManager.scss";
 const loadDependencies = () => [import("@humansignal/datamanager"), import("@humansignal/editor")];
 
 const initializeDataManager = async (root, props, params) => {
-  if (!window.LabelStudio) throw Error("Label Studio Frontend doesn't exist on the page");
+  if (!window.LabelStudio) throw Error("Deepmentor Label Frontend doesn't exist on the page");
   if (!root && root.dataset.dmInitialized) return;
 
   root.dataset.dmInitialized = true;
