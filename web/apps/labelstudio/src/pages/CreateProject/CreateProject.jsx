@@ -1,4 +1,3 @@
-import { EnterpriseBadge } from "@humansignal/ui";
 import React from "react";
 import { useHistory } from "react-router";
 import { Button, ToggleItems } from "../../components";
@@ -12,7 +11,8 @@ import "./CreateProject.scss";
 import { ImportPage } from "./Import/Import";
 import { useImportPage } from "./Import/useImportPage";
 import { useDraftProject } from "./utils/useDraftProject";
-import { Input, Select, TextArea } from "../../components/Form";
+import { Select } from "../../components/Form";
+import { EnterpriseBadge } from "../../components/Badges/Enterprise";
 import { Caption } from "../../components/Caption/Caption";
 import { FF_LSDV_E_297, isFF } from "../../utils/feature-flags";
 import { createURL } from "../../components/HeidiTips/utils";
@@ -28,7 +28,7 @@ const ProjectName = ({ name, setName, onSaveName, onSubmit, error, description, 
     >
       <div className="field field--wide">
         <label htmlFor="project_name">Project Name</label>
-        <Input
+        <input
           name="name"
           id="project_name"
           value={name}
@@ -39,12 +39,11 @@ const ProjectName = ({ name, setName, onSaveName, onSubmit, error, description, 
       </div>
       <div className="field field--wide">
         <label htmlFor="project_description">Description</label>
-        <TextArea
+        <textarea
           name="description"
           id="project_description"
           placeholder="Optional description of your project"
           rows="4"
-          style={{ minHeight: 100 }}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
@@ -53,7 +52,7 @@ const ProjectName = ({ name, setName, onSaveName, onSubmit, error, description, 
         <div className="field field--wide">
           <label>
             Workspace
-            <EnterpriseBadge className="ml-2" />
+            <EnterpriseBadge />
           </label>
           <Select placeholder="Select an option" disabled options={[]} />
           <Caption>
@@ -82,15 +81,14 @@ export const CreateProject = ({ onClose }) => {
   const [step, _setStep] = React.useState("name"); // name | import | config
   const [waiting, setWaitingStatus] = React.useState(false);
 
-  const { project, setProject: updateProject } = useDraftProject();
+  const project = useDraftProject();
   const history = useHistory();
   const api = useAPI();
 
   const [name, setName] = React.useState("");
   const [error, setError] = React.useState();
   const [description, setDescription] = React.useState("");
-  const [sample, setSample] = React.useState(null);
-
+  const [config, setConfig] = React.useState("<View></View>");
   const setStep = React.useCallback((step) => {
     _setStep(step);
     const eventNameMap = {
@@ -105,7 +103,7 @@ export const CreateProject = ({ onClose }) => {
     setError(null);
   }, [name]);
 
-  const { columns, uploading, uploadDisabled, finishUpload, pageProps, uploadSample } = useImportPage(project, sample);
+  const { columns, uploading, uploadDisabled, finishUpload, pageProps } = useImportPage(project);
 
   const rootClass = cn("create-project");
   const tabClass = rootClass.elem("tab");
@@ -117,17 +115,15 @@ export const CreateProject = ({ onClose }) => {
 
   // name intentionally skipped from deps:
   // this should trigger only once when we got project loaded
-  React.useEffect(() => {
-    project && !name && setName(project.title);
-  }, [project]);
+  React.useEffect(() => project && !name && setName(project.title), [project]);
 
   const projectBody = React.useMemo(
     () => ({
       title: name,
       description,
-      label_config: project?.label_config ?? "<View></View>",
+      label_config: config,
     }),
-    [name, description, project?.label_config],
+    [name, description, config],
   );
 
   const onCreate = React.useCallback(async () => {
@@ -136,10 +132,6 @@ export const CreateProject = ({ onClose }) => {
     if (!imported) return;
 
     setWaitingStatus(true);
-
-    if (sample) {
-      await uploadSample(sample);
-    }
     const response = await api.callApi("updateProject", {
       params: {
         pk: project.id,
@@ -171,20 +163,17 @@ export const CreateProject = ({ onClose }) => {
     setError(err.validation_errors?.title);
   };
 
-  const onDelete = React.useCallback(() => {
-    const performClose = async () => {
-      setWaitingStatus(true);
-      if (project)
-        await api.callApi("deleteProject", {
-          params: {
-            pk: project.id,
-          },
-        });
-      setWaitingStatus(false);
-      updateProject(null);
-      onClose?.();
-    };
-    performClose();
+  const onDelete = React.useCallback(async () => {
+    setWaitingStatus(true);
+    if (project)
+      await api.callApi("deleteProject", {
+        params: {
+          pk: project.id,
+        },
+      });
+    setWaitingStatus(false);
+    history.replace("/projects");
+    onClose?.();
   }, [project]);
 
   return (
@@ -219,19 +208,10 @@ export const CreateProject = ({ onClose }) => {
           setDescription={setDescription}
           show={step === "name"}
         />
-        <ImportPage
-          project={project}
-          show={step === "import"}
-          sample={sample}
-          onSampleDatasetSelect={setSample}
-          openLabelingConfig={() => setStep("config")}
-          {...pageProps}
-        />
+        <ImportPage project={project} show={step === "import"} {...pageProps} />
         <ConfigPage
           project={project}
-          onUpdate={(config) => {
-            updateProject({ ...project, label_config: config });
-          }}
+          onUpdate={setConfig}
           show={step === "config"}
           columns={columns}
           disableSaveButton={true}
