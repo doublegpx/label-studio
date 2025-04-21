@@ -175,7 +175,7 @@ const FormatInfo = ({ availableFormats, selected, onClick }) => {
           </Elem>
         ))}
       </Elem>
-      <Elem name="feedback">
+      {/* <Elem name="feedback">
         Can't find an export format?
         <br />
         Please let us know in{" "}
@@ -191,7 +191,7 @@ const FormatInfo = ({ availableFormats, selected, onClick }) => {
         >
           Repository
         </a>
-      </Elem>
+      </Elem> */}
     </Block>
   );
 };
