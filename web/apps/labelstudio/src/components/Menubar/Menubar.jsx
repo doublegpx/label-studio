@@ -189,7 +189,7 @@ export const Menubar = ({ enabled, defaultOpened, defaultPinned, children, onSid
 
                 <Menu.Spacer />
 
-                <VersionNotifier showNewVersion />
+                {/* <VersionNotifier showNewVersion />
 
                 <Menu.Item
                   label="API"
@@ -211,7 +211,7 @@ export const Menubar = ({ enabled, defaultOpened, defaultPinned, children, onSid
                   icon={<LsSlack />}
                   target="_blank"
                   rel="noreferrer"
-                />
+                /> */}
 
                 <VersionNotifier showCurrentVersion />
 

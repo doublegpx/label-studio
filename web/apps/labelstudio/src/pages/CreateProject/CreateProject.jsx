@@ -71,7 +71,7 @@ const ProjectName = ({ name, setName, onSaveName, onSubmit, error, description, 
               Learn more
             </a>
           </Caption>
-          <HeidiTips collection="projectCreation" />
+          {/* <HeidiTips collection="projectCreation" /> */}
         </div>
       )}
     </form>
