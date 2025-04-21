@@ -393,12 +393,12 @@ export const ImportPage = ({
                 </dl>
                 <b>
                   * – Support depends on the browser
-                  <br />* – Direct media uploads have{" "}
-                  <a href="https://labelstud.io/guide/tasks.html#Import-data-from-the-Label-Studio-UI">limitations</a>{" "}
-                  and we strongly recommend using{" "}
-                  <a href="https://labelstud.io/guide/storage.html" target="_blank" rel="noreferrer">
+                  <br />* – Direct media uploads have limitations{" "}
+                  {/* <a href="https://labelstud.io/guide/tasks.html#Import-data-from-the-Label-Studio-UI">limitations</a>{" "} */}
+                  and we strongly recommend using Cloud Storage{" "}
+                  {/* <a href="https://labelstud.io/guide/storage.html" target="_blank" rel="noreferrer">
                     Cloud Storage
-                  </a>{" "}
+                  </a>{" "} */}
                   instead
                 </b>
               </div>
@@ -431,7 +431,7 @@ export const ImportPage = ({
         </Upload>
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
