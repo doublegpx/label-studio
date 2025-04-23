@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block page_labeling %}
-  <title>404 | Label Studio</title>
+  <title>404 | Deepmentor Label</title>
   {{ block.super }}
 {% endblock %}
 
@@ -14,13 +14,13 @@
 {% block content %}
 <div class="ls-global-error">
   <h1>Server error</h1>
-  <img class="ls-global-error__heidi" src="{{ settings.HOSTNAME }}{% static 'images/opossum_broken.svg' %}" height="111" alt="Heidi's down" />
+  <img class="ls-global-error__heidi" src="{{ settings.HOSTNAME }}{% static 'images/opossum_broken.png' %}" height="111" alt="Heidi's down" />
   <h2>404 Not Found</h2>
   <p class="ls-global-error__actions">
-    <a class="ls-global-error__slack button" target="_blank" href="https://slack.labelstud.io/?source=product-404-error">
+    {% comment %} <a class="ls-global-error__slack button" target="_blank" href="https://slack.labelstud.io/?source=product-404-error">
       <img src="{{ settings.HOSTNAME }}{% static 'images/slack.png' %}" width="16" />
       Ask on Slack
-    </a>
+    </a> {% endcomment %}
     <button onClick="history.back()">Go Back</button>
     <button onClick="location.reload()">Reload</button>
   </p>

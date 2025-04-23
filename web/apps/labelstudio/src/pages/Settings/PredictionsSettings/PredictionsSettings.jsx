@@ -63,11 +63,11 @@ export const PredictionsSettings = () => {
             description="Predictions could be used to prelabel the data, or validate the model. You can upload and select predictions from multiple model versions. You can also connect live models in the Model tab."
             footer={
               <div>
-                Need help?
+                {/* Need help?
                 <br />
                 <a href="https://labelstud.io/guide/predictions" target="_blank" rel="noreferrer">
                   Learn more on how to upload predictions in our docs
-                </a>
+                </a> */}
               </div>
             }
           />

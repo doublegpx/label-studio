@@ -44,7 +44,7 @@ export const GeneralSettings = () => {
                   <Select placeholder="Select an option" disabled options={[]} />
                   <Caption>
                     Simplify project management by organizing projects into workspaces.{" "}
-                    <a
+                    {/* <a
                       target="_blank"
                       href={createURL(
                         "https://docs.humansignal.com/guide/manage_projects#Create-workspaces-to-organize-projects",
@@ -56,7 +56,7 @@ export const GeneralSettings = () => {
                       rel="noreferrer"
                     >
                       Learn more
-                    </a>
+                    </a> */}
                   </Caption>
                 </Block>
               )}
@@ -90,7 +90,7 @@ export const GeneralSettings = () => {
                     description={
                       <>
                         Tasks are chosen according to model uncertainty score (active learning mode).{" "}
-                        <a
+                        {/* <a
                           target="_blank"
                           href={createURL("https://docs.humansignal.com/guide/active_learning", {
                             experiment: "project_settings_workspace",
@@ -99,7 +99,7 @@ export const GeneralSettings = () => {
                           rel="noreferrer"
                         >
                           Learn more
-                        </a>
+                        </a> */}
                       </>
                     }
                   />

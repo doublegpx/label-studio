@@ -111,11 +111,11 @@ export const MachineLearningSettings = () => {
             }
             footer={
               <div>
-                Need help?
+                {/* Need help?
                 <br />
                 <a href="https://labelstud.io/guide/ml" target="_blank" rel="noreferrer">
                   Learn more about connecting models in our docs
-                </a>
+                </a> */}
               </div>
             }
           />
