@@ -46,12 +46,7 @@ export const PredictionsSettings = () => {
           <Elem name="title-block">
             <Elem name="title">Predictions List</Elem>
             <Description style={{ marginTop: "1em" }}>
-              List of predictions available in the project. Each card is associated with a separate model version. To
-              learn about how to import predictions,{" "}
-              <a href="https://labelstud.io/guide/predictions.html" target="_blank" rel="noreferrer">
-                see&nbsp;the&nbsp;documentation
-              </a>
-              .
+              List of predictions available in the project. Each card is associated with a separate model version.
             </Description>
           </Elem>
         )}
