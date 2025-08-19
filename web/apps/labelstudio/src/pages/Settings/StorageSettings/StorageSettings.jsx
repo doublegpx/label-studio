@@ -6,7 +6,8 @@ import { StorageSet } from "./StorageSet";
 import "./StorageSettings.scss";
 import { isInLicense, LF_CLOUD_STORAGE_FOR_MANAGERS } from "../../../utils/license-flags";
 
-const isAllowCloudStorage = !isInLicense(LF_CLOUD_STORAGE_FOR_MANAGERS);
+//const isAllowCloudStorage = !isInLicense(LF_CLOUD_STORAGE_FOR_MANAGERS);
+const isAllowCloudStorage = false;
 
 export const StorageSettings = () => {
   const rootClass = cn("storage-settings");
