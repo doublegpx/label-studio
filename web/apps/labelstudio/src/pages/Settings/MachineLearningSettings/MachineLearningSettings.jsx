@@ -140,10 +140,10 @@ export const MachineLearningSettings = () => {
               <br />
               3. Click on <i>Retrieve predictions</i> from the <i>Actions</i> menu.
             </Description>
-            <Description>
+            {/* <Description>
               If you want to use the model predictions for prelabeling, please configure this in the{" "}
               <NavLink to="annotation">Annotation settings</NavLink>.
-            </Description>
+            </Description> */}
           </>
         )}
 
@@ -153,7 +153,7 @@ export const MachineLearningSettings = () => {
           params={{ pk: project.id }}
           onSubmit={() => fetchProject()}
         >
-          {backends.length > 0 && (
+          {/* {backends.length > 0 && (
             <Form.Row columnCount={1}>
               <Label text="Configuration" large />
 
@@ -165,16 +165,16 @@ export const MachineLearningSettings = () => {
                 />
               </div>
             </Form.Row>
-          )}
+          )} */}
 
           {backends.length > 0 && (
             <Form.Actions>
               <Form.Indicator>
                 <span case="success">Saved!</span>
               </Form.Indicator>
-              <Button type="submit" look="primary" style={{ width: 120 }}>
+              {/* <Button type="submit" look="primary" style={{ width: 120 }}>
                 Save
-              </Button>
+              </Button> */}
             </Form.Actions>
           )}
         </Form>
